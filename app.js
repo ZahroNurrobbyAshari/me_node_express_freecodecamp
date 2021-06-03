@@ -1,20 +1,11 @@
-const amount = 12;
+//  CommonJS, every file is module (by default)
+//  Modules -> encapsulated code (only share minimum)
 
-amount < 10 ? console.log("small number") : console.log("large number");
+const names = require("./4-names");
+const sayHi = require("./5-utils");
+const data = require("./6-alternative-flavor");
 
-console.log("hello world");
-
-console.log(__dirname);
-
-setTimeout(() => {
-  console.log("tempek");
-}, 60);
-
-const sayHi = (name) => {
-  console.log(`tempek ${name}`);
-};
-
-const tempek = "tempek";
-
-sayHi("stev");
-sayHi(tempek);
+console.log(data);
+sayHi("robby");
+sayHi(names.names[0]);
+sayHi(names.names[1]);
