@@ -1,24 +1,33 @@
-//  start
+const { readFile, writeFile } = require("fs").promises;
+// const util = require("util");
+// const readFilePromise = util.promisify(readFile);
+// const writeFilePromise = util.promisify(writeFile);
 
-console.log("first task");
-console.time();
-for (let i = 0; i < 10000; i++) {
-  const h3 = document.querySelector("h3");
-  h3.textContent = "hey, everyone is waiting on me";
-}
-console.timeEnd();
+const start = async () => {
+  try {
+    const first = await readFile("./content/first.txt", "utf8");
+    const second = await readFile("./content/second.txt", "utf8");
+    await writeFile(
+      "./content/result-mind-grenade.txt",
+      `This is awesome : ${first},${second}`,
+      { flag: "a" }
+    );
+    console.log(first, second);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-console.log("next task");
+start();
 
-//  end
-
-// start
-
-console.log("first task");
-setTimeout(() => {
-  console.log("second task");
-}, 0);
-
-console.log("next task");
-
-//end
+// const getText = (path) => {
+//   return new Promise((resolve, reject) => {
+//     readFile(path, "utf8", (err, data) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(data);
+//       }
+//     });
+//   });
+// };
